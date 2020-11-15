@@ -1,0 +1,27 @@
+ a) Wysymuluj z powtorzeniami 10 liczb z wektora od 1 do 10 (seed = 123).
+```{r}
+set.seed(123)
+x <- c(1:10)
+a <- sample(x, 10, replace= TRUE)
+```
+
+ b) Przeksztalc wektor z punktu a) na 10-elementowa liste.
+```{r}
+list <- as.list(x)
+```
+
+ c) Dla kazdego elementu listy wysumuluj "n" liczb z rozkladu rownomiernego (seed = 123), gdzie "n" jest liczba obecnie znajdujaca sie w elemencie listy.
+ 
+```{r}
+vec = c()
+set.seed(123)
+for (i in x) {
+  y <- sample(x, i, replace= TRUE)
+  randVec <- append(a, sum(y))
+}
+```
+d) Dokonaj zlaczenia elementow listy w jeden wektor.
+```{r}
+vec<-unlist(list)
+vec
+```
