@@ -1,0 +1,39 @@
+ a) Stworz funkcje wskazujaca obserwacje odstajace z podanego wektora liczb rzeczywistych (x <-rcauchy(10)) wykorzystujaca regule kwartylow: Q1-1.5*(Q3-Q1) Q1+1.5*(Q3-Q1).
+
+```{r}
+x <-rcauchy(10)
+set.seed(5)
+```
+
+
+ 
+b) Funkcja powinna zwracac obiekt z podanymi atrybutami zawierajacymi informacje:
+   a. jakie wartosci sa odstajace
+   b. jakie wartosci sa nieodstajace
+   c. indeksy wartosci odstajacych
+   d. indeksy wartosci nieodstajacych
+
+```{r}
+
+quantile_my <- function(x) {
+    Q <- quantile(x, probs=c(.25, .75), na.rm = FALSE)
+    iqr <- IQR(x)
+    not_out <- subset(x, x > (Q[1] - 1.5*iqr) & x < (Q[1]+1.5*iqr))
+    outliers <- setdiff(x, not_out)
+
+    d <- data.frame(
+      not_out = not_out,
+      outliers = setdiff(x, not_out),
+      ind_out = match(outliers, x),
+      ind_not_out = match(not_out, x)
+    )
+}
+
+out <- quantile_my(x)
+```
+
+```{r}
+elmin
+```
+
+c)  (wykorzystaj funkcje quantile, which, attr).
