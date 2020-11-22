@@ -1,0 +1,54 @@
+set.seed(222)
+x <- c(1:30)
+w <- 30
+k <- 12
+m <- matrix(runif(30*12), nrow = w, ncol = k)
+m[,1] <- sample(x, size=w, replace = FALSE) 
+m[,k] <- sample(c(1:3), size= 30, replace = TRUE)
+m
+
+# Zadania 5
+# a)
+mydata <- read.table("do_zad_z_zaj_7.txt", sep = '\n')
+
+# b)
+col_na <- c(1:length(mydata))
+col_na
+
+doCol_na <- function(mydata)
+{
+  for (i in 1:length(mydata)){
+    col_na[i] <- mydata[i]
+  }
+  return(col_na)
+}
+col_na <- doCol_na(mydata)
+col_na
+vecCol_na <- col_na[[1]]
+vecCol_na
+
+colnames(m) <- vecCol_na
+
+rownames(m) <- 1:w
+m <- rbind(m,sumyKol)
+# c)
+ramka <- data.frame(m) 
+# d)
+sumCol <- apply(ramka, MARGIN=2, sum)
+# e)
+
+sumCol <- unname(sumCol)
+
+
+# f)
+
+vec_n <- c('x_1','x_2','x_3','x_4','x_5','x_6','x_7','x_8','x_9','x_10')
+grupa1 <- ramka[ramka$grupa==1.0,]
+mean_grup1 <- apply(grupa1[,vec_n], MARGIN = 2, mean)
+
+grupa2 <- ramka[ramka$grupa==2.0,]
+mean_grup1 <- apply(grupa2[,vec_n], MARGIN = 2, mean)
+
+grupa6 <- ramka[ramka$grupa==3.0,]
+mean_grup6 <- apply(grupa6[,vec_n], MARGIN = 2, mean)
+

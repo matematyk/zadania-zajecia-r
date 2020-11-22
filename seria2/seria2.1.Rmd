@@ -1,0 +1,43 @@
+a) Wysymuluj 30 liczb calkowitych z przedzialu od 10 do 20. Poczatkowa wartosc generatora liczb pseudolosowych powinna zostac ustalona na 444.
+```{r}
+c <- c(10:20)
+vec_a <- sample(c, size=30, replace=TRUE)
+dl_sum <- length(vec_a)
+sum_s <- sum(sample(c, size=30, replace=TRUE))
+```
+b) Stworz nastepnie poprzez prealokacje wektor liczb calkowitych o wartosciach domyslnych. 
+   Dlugosc tego wektora ustalona jest jako dlugosc wysymulowanego wektora z punktu powyzej.
+
+```{r}
+vec_b <-  integer(dl_sum)
+vec_b
+```
+c) Za pomoca petli for wstaw nastepnie elementy wektora losowego (pkt. a) do wektora z pkt. b. 
+   Petla powinna byc wykonana w dwoch wersjach: operujac na indeksach obydwu wektorow oraz na rzeczywistych wartosciach jednego z nich.
+   W ostatnim kroku kazda petla powinna wyswietlac (nie uzywajac funckji print()) caly wektor (pkt. b) oraz informacje o jego typie (wiersz ponizej). 
+
+```{r}
+for (i in 1:length(vec_b))
+{
+  vec_b[i] <- vec_a[i] 
+}
+
+i <- 1
+for (y in vec_b)
+{
+  y <- vec_a[i]
+  i <- i + 1
+}
+```
+```{r}
+vec_c <- vec_b
+for (y in vec_c)
+{
+  y <- vec_a[i]
+  i <- i + 1
+}
+```
+```{r}
+vec_c
+typeof(vec_c)
+```

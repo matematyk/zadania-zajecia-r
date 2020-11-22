@@ -1,0 +1,28 @@
+
+Zadanie_2:
+
+
+a) Stworz wektor zawierajacy liczby od 1 do 9,
+```{r}
+vec_a <- c(1:9)
+```
+b) Stworz liste o dlugosci odpowiadajacej dlugosci wektora z pkt. a.
+
+```{r}
+list_r <- list(c(length(c)))
+```
+
+c) Za pomoca petli for iterujacej w ramch wartosci zawartych w wektorze z pkt. a, wstaw w kolejne elementy listy podzbiĂłr wektora z pkt a, tak aby pierwszy element listy zawieral pierwszy element, drugi element listy zawieral pierwszy oraz drugi element,..., 
+   dziewiaty element listy zawieral wszystkie elementy. Stworzy sie swojego rodzaju piramida.
+```{r}
+c_vec_a <- vec_a
+for (i in 1:length(vec_a)){
+  list_r[[i]] <- vec_a[1:i]
+}
+```
+```{r}
+c_vec_a <- 
+```
+```{r}
+vec_a[1:2]
+```

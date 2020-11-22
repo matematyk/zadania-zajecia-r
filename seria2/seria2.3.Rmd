@@ -1,0 +1,18 @@
+Zadanie_4:
+a) Stworz macierz o rozmiarze "30x12".
+```{r}
+set.seed(222)
+c <- sample(c(1:30*12), size=30*12, replace=TRUE)
+m <- matrix(c, nrow=30, ncol=12 )
+m[1,] #pierwsza rzad
+m[,1] #pierwsza kolumna
+```
+b) Poczatkowa wartosc generatora liczb pseudolosowych powinna zostac ustalona na 222.
+
+c) Pierwsza kolumna powinna zawierac 30 unikalnych wartosci losowych z wektora "1:30".
+
+d) Ostatnia kolumna powinna zawierac 30 nieunikalnych wartosci losowych z wektora "1:3".
+e) Pozostale kolumny powinny zawierac wartosci losowe pochodzace z rozkladu rownomiernego "runif()".
+```{r}
+x<- runinf(1,2)
+```
