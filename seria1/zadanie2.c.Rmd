@@ -1,0 +1,15 @@
+ b) Funkcja powinna zwracac obiekt z podanymi atrybutami zawierajacymi informacje:
+   a. jakie wartosci sa odstajace
+   b. jakie wartosci sa nieodstajace
+   c. indeksy wartosci odstajacych
+   d. indeksy wartosci nieodstajacych
+ c) (wykorzystaj funkcje quantile, which, attr).
+ 
+ ```{r}
+
+Q <- quantile(x, probs=c(.25, .75), na.rm = FALSE)
+iqr <- IQR(x)
+y<- x > (Q[1] - 1.5*iqr) & x < (Q[1]+1.5*iqr)
+index_norm_values <- which(y)
+
+```

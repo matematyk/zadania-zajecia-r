@@ -1,0 +1,52 @@
+Zadanie_1:
+a) Stworz macierz rozmiaru "10X10" z wartosciami losowymi z rozkladu rownomiernego.
+```{r}
+m <- replicate(3, rnorm(10))
+
+c <- sample(c(1:100), size=100, replace=TRUE)
+m <- matrix(c, nrow=10, ncol=10 )
+
+```
+
+b) Stworz funkcje "Funkcja" ktora zwracac bedzie do obiektu "wynik_1" wartosc srednia dla kazdej kolumny macierzy wejsciowej.
+```{r}
+wynik_1 = 0
+Funkcja <- function(x) {
+  wynik_1 <<- apply(x,2,mean)
+}
+
+Funkcja(m)
+```
+c) Stworz "Funkcja_env" ktora bedzie "srodowiskowa" wersja powyzszej funkcji. 
+   Powinna ona nie zwracac zadnego obiektu, lecz umieszczac wynikowy obiekt w srodowisku, ktore bedzie obiektem wejsciowym dla funkcji.
+```{r}
+Funkcja_env <- function(x, env){
+  COL = 2
+  env$result <- apply(x, COL, mean)
+}
+env1 <- new.env()
+Funkcja_env(m, env1)
+```
+   
+Zadanie_2:
+a) Stworz srodowisko "Pierwsze".
+```{r}
+first <- new.env()
+```
+b) Umiesc w srodowisku "Pierwsze" obiekt "x" przyjmujacy wartosc 10.
+```{r}
+first$x <- 10
+```
+c) Stworz srodowisko "Drugie" w srodowisku "Pierwsze". (Po wyswietleniu obiektow znajdujacych sie w srodowisku "Pierwsze", srodowisko "Drugie" powinno byc tam widoczne)
+```{r}
+first$drugie <- new.env()
+```
+d) Umiesc w srodowisku "Drugie" obiekt "y" przyjmujacy wartosc 20.
+```{r}
+first$drugie$y <- 20
+```
+e) Stworz funkcje zamieniajaca wartosc obiektu "x" w srodowisku "Pierwsze" na warotsc z obiektu "y" ze srodowiska "Drugie". Funkcja przyjmuje jako argument srodowisko.
+```{r}
+
+```
+f) Wyswietl obiekty znajdujace sie w kazdym srodowisku .
