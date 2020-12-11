@@ -1,0 +1,16 @@
+```{r}
+m = 10^4
+n = 12
+Th <- runif(m) #
+X <- rbinom(m,n,Th)
+hist(Th, probl=TRUE)
+plot(Th, X, pch=".")
+pal = c("black", "red")
+k = 5
+C = (X==k)
+kol <- pal[C+1]
+plot(Th,X,col=kol, pch=".")
+ThCond <- Th[C]
+hist(ThCond, prob=TRUE)
+curve(dbeta(x,k+1,n-k+1), add=TRUE, col="blue")
+```
