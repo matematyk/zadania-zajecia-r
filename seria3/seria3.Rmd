@@ -5,12 +5,17 @@ m <- replicate(3, rnorm(10))
 
 c <- sample(c(1:100), size=100, replace=TRUE)
 m <- matrix(c, nrow=10, ncol=10 )
+m <- replicate(10, runif(0,1))
+```
 
+```{r}
+m <- replicate(2, runif(10,0,1))
+m
 ```
 
 b) Stworz funkcje "Funkcja" ktora zwracac bedzie do obiektu "wynik_1" wartosc srednia dla kazdej kolumny macierzy wejsciowej.
 ```{r}
-wynik_1 = 0
+wynik_1 <- 0
 Funkcja <- function(x) {
   wynik_1 <<- apply(x,2,mean)
 }
