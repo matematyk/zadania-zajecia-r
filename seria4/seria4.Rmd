@@ -9,10 +9,24 @@ dane <-  c("1", "1 2", "12a3", "1223", "122234", "212234","1 22 3")
 b) Stworz wyrazenie regularne znajdujace elementy wektora "dane", konczace sie na "2" lub "3".
 ```{r}
 g <- function(s) {
-  return <- regexpr("^[a-z|A-Z|0-9]+[^I]\s?I{1}$", s)
+  return <- regexpr("^[a-z|A-Z|0-9]+[^I]\\s?I{1}$", s)
 }
 ```
 
+```{r}
+library(stringr)
+
+dane <- c("1", "1 2", "12a3", "1223", "122234", "212234","1 22 3")
+
+for (i in dane){
+  print(str_extract_all(i, "^[a-z|A-Z|0-9]+\\s?(2|3){1}$"))
+}
+#^[a-z|0-9|a-z|A-Z]2{1}|2{2}|2{3}[a-z|0-9|a-z|A-Z]]$
+
+for (i in dane){
+  print(str_extract_all(i, "[a-z]|\\s"))
+}
+```
 
 
 ```{r}
@@ -44,25 +58,52 @@ x<- rnorm(1000, 100, 10)
 
 ```{r}
 r <- x+y
+r <- c(x,y)
 ```
 b) Podziel powyzszy szerego na 6 rownych odcinkow.
 ```{r}
   sp <- split(r, ceiling(seq_along(r)/167))
-
+  sp
 ```
 
 
 c) Stworz za pomoca petli for 6 wykresow liniowy stworzonych w jednym okienku podzielonym na 6 obszarow.
 ```{r}
-  for (i in length(sp)) {
-    plot(x=c(1:length(sp[i]), y=sp[i]))
+  v3<- c(v1,v2)
+  v3<- v3[1:1998]
+  length(v3)
+  sp <- split(v3, ceiling(seq_along(v3)/333))
+  
+  for (i in 1:length(sp)){
+    plot(sp[[i]])
+    title(sprintf("Wykres_%d",i))
   }
+
 ```
 d) Kazdy wykres stworzony jest na podstawie odcinkow z pkt b).
+
 e) Tytul wykresu powinien zmieniac sie dynamicznie od "Wykres_1" do "Wykres_6".
+```{r}
+
+```
 f) Nazwa osi pionowej to "temperatura".
 
 ```{r}
-norm <- rnorm(1000)
+v1 <- c(1:1000)
+v2 <- rnorm(1000, 100, 10)
+
+v3<- c(v1,v2)
+v3<- v3[1:1998]
+length(v3)
+v1 <- v1[1:996]
+sp1 <- split(v1, ceiling(seq_along(v1)/166))
+v2 <- v2[1:996]
+sp2 <- split(v2, ceiling(seq_along(v2)/166))
+
+for (i in 1:length(sp)){
+  plot(y=sp2[[i]],x=sp1[[i]], ylab="Temperatura", xlab="Indeks")
+  title(main=sprintf("Wykres_%d",i))
+}
+
 
 ```
