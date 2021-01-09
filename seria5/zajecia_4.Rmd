@@ -1,0 +1,38 @@
+
+```{r}
+dir.create("zadanie_1")
+setwd("zadanie_1")
+```
+
+```{r}
+for (i in 1:2) {
+  today <- Sys.Date() + i
+  data <- format(today, format="%B %d %Y")
+  
+  file.create(sprintf("plik_%d.txt",i))
+  fileConn <- file(sprintf("plik_%d.txt",i))
+  writeLines(c(data), fileConn)
+  close(fileConn)
+}
+```
+```{r}
+?writeLines
+```
+
+```{r}
+readLines("plik_1.txt")
+```
+
+d) Za pomoca petli zlacz pliki z punktu "c)" w jeden plik "plik_wszystko". 
+   Petla powinna iterowac po posortowanych nazwach plikow znajdujacaych sie w katalogu "zadanie_1".
+```{r}
+
+file.create("plik_wszystko.txt")
+for (i in 1:2) {
+  plikWszyConn <- "plik_wszystko.txt"
+  text <- readLines(sprintf("plik_%d.txt",i))
+  text
+  write(text, "plik_wszystko.txt")
+}
+
+```

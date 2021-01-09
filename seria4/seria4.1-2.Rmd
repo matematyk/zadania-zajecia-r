@@ -1,3 +1,19 @@
+library(stringr)
+#a) wszystkie znaki odpowiadajace wartosciom liczbowym z zakresu 1:128
+coderange <- c(1:128)
+x <- rawToChar(as.raw(coderange), multiple = TRUE)
+#b) wywietl wszystkie znaki z wektora x, ktore odpowiadaja liczbom lub literom malym lub wielkim,
+y1<- str_extract(x, "^[a-zA-Z0-9]$")
+y1[!sapply(y1, is.na)]
+# c) wszystwietl wszystkie znaki z wektora x, ktore odpowiadaja liczbom lub znakom oddzielajacym tekst tj. spacja 
+
+y2<- str_extract(x, "^([0-9]|\\s)$")
+y2[!sapply(y2, is.na)]
+# d)
+y3<- str_extract(x, "^([^0-9*])$")
+y3[!sapply(y3, is.na)]
+
+
 Zadanie_1:
 ```{r}
 library(stringr)
@@ -34,7 +50,7 @@ b) Stworz wyrazenie regularne, ktore spowoduje wybranie tylko imion: "Kasia","jo
 ```{r}
 
   for (i in y){
-    print(str_extract_all(i, "^[a-z|A-Z|0-9]+(asia)$"))
+    print(str_extract_all(i, "^[a-zA-Z0-]9]+(asia)$"))
   }
 ```
 c) Stworz wyrazenie regularne, ktore spowoduje wybranie tylko imion: "Jacek", "Kasia"
