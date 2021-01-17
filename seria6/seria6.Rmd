@@ -1,0 +1,67 @@
+```{r}
+
+cumSum <- function(wector) {
+  new <- c(1:length(wector))
+  
+  for (j in 1:length(wector)){
+    sumCum = 0
+    for (i in 1:j){
+      sumCum <- sumCum + wector[i];
+      new[i] <- sumCum;
+    }
+  }
+  
+  return(new)
+}
+
+y <- cumSum(c(1:10))
+
+```
+
+```{R}
+solved <- function(A,b){
+  x <- solve(A)%*%b
+  #d <- solve(A,b)
+  return(x)
+}
+
+solved(matrix(c(1:4),nrow=2, ncol=2), c(1,2))
+
+```
+
+```{R}
+matrixx <- function(wektor, rzad, kolumna){
+  wektor_wektorow <- list()
+  # (1,2,3,4) 1-> (0,0), 2-> (0,1), 3->(1,0). 4->(1,1)
+  indeks <- 1
+  for (i in c(1:kolumna)){
+    rzad_ma <- c(1:rzad)
+    for (j in c(1:rzad)){
+      rzad_ma[j] <- wektor[indeks]
+      indeks<- indeks +1
+    }
+    
+    wektor_wektorow[[i]] <- rzad_ma
+    
+  }
+  return(wektor_wektorow)
+}
+
+matrixx(c(1:4), rzad=2, kolumna=2)
+
+```
+
+
+```{r}
+cumSum1 <- function(wector) {
+  suma <- list()
+  suma[[1]] <- wector[1]
+  for (x in 2:length(wector)){
+    suma[[x]] <- suma[[x-1]] + wector[x]  
+  }
+  return(suma)
+}
+
+z <- cumSum1(c(1:10))
+```
+
