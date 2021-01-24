@@ -1,0 +1,36 @@
+# Zadanie_2:
+#   a) Wysymuluj 50 liczb calkowitych z przedzialu od 1 do 20 do wektora "wektor_2".
+set.seed(123)
+wektor_2 <- sample(c(1:20),50, replace=TRUE)
+# Poczatkowa wartosc generatora liczb pseudolosowych powinna zostac ustalona na 123.  
+# b) Zaimportuj plik "Zadanie_2" do obiektu "nazwy". Kolumny powinny byc zaimportowane jako tekst.
+nazwy <- read.delim("Na_kol/Zadanie_2.txt", sep=":")
+# c) Nadaj nazwe kolejnym elementom wektora "wektor_2" na podstawie wektora "nazwy".
+names(wektor_2) <- nazwy
+# d) Wyznacz sume elementow nalezacych do kazdej grupy (zakresu).
+# e) Wyznacz liczbe elementow nalezacych do kazdej grupy (zakresu).
+d) Wyznacz sume elementow nalezacych do kazdej grupy (zakresu).
+```
+tapply(wektor_2, names(wektor_2), sum)
+```
+e) Wyznacz liczbe elementow nalezacych do kazdej grupy (zakresu).
+```{r}
+tapply(wektor_2, names(wektor_2), length)
+```
+# #Zadanie_4:
+# #  a) Zaimportuj plik "Zadanie_4" do obiektu "obiekt_4".
+# 
+```{r}
+obiekt_4 <- read.delim("Na_kol/Zadanie_4.txt", sep="&",header=TRUE)
+```
+# b) Dodaj do obiektu "obiekt_4" nowa kolumne "nowa" poprzez przetestowanie czy liczba w kolumnie "losowe" jest mniejsza od 0.8, 
+```{r}
+obiekt_4$nowa <- obiekt_4$losowe<0.8
+```
+# c) Stworz liste "lista_4" poprzez podzial obiektu "obiekt_4" ze wzgledu na kolumne "nowa".
+```
+lista_4 <- split(obiekt_4, obiekt_4$nowa)
+```
+# d) Wykorzystujac zwektoryzowana funkcje przejdz do kazdego elementu listy "lista_4" i wyznacz dla wszystkich mozliwych kolumn sume elementow nalezacych do grupy wyznaczonej przez kolumne "przemienne"
+```{r}
+tapply(obiekt_4$losowe, obiekt_4$przemienne,sum )
